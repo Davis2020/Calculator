@@ -13,8 +13,10 @@ from tkinter import messagebox
 
 root = Tk(className = 'Calculator')
 root.geometry('250x400+300+300')
+root.attributes('-alpha',0.8)
 
 root.resizable(False, False)
+
 
 data= StringVar()
 lbl=Label(
@@ -25,7 +27,7 @@ lbl=Label(
     textvariable=data,
     background="#ffffff",
     fg="#000000",
-    bg="#7B7C7C",
+    bg="#5EA8A8",
     relief=SOLID
 )
 lbl.pack(expand=True,fill="both",)
@@ -149,7 +151,10 @@ def decimal_btn_clicked():
     global val
     global operator
     global A
-    A = int(val)
+    if type(A) == int():
+        A = int(val)
+    A = val
+    A = float(val)
     operator = "."
     val += "."
     data.set(val)
@@ -183,7 +188,8 @@ def result():
         val=str(c)
     elif operator == "*":
         x=float((val2.split("*")[1]))
-        c = A * x
+        x1=float((val2.split("*")[2]))
+        c = A * x * x1
         data.set(c)
         val=str(c)
     elif operator == "/":
@@ -230,7 +236,7 @@ add_btn = Button(
     btn_row1,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="+",
     font = 200,
@@ -245,7 +251,7 @@ minus_btn = Button(
     btn_row2,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="-",
     font = 200,
@@ -259,7 +265,7 @@ multiply_btn = Button(
     btn_row3,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="x",
     font = 200,
@@ -272,7 +278,7 @@ division_btn = Button(
     btn_row4,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="/",
     font = 200,
@@ -285,7 +291,7 @@ equals_btn = Button(
     btn_row4,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="=",
     font = 200,
@@ -298,7 +304,7 @@ one_btn = Button(
     btn_row1,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="1",
     font = 200,
@@ -311,7 +317,7 @@ two_btn = Button(
     btn_row1,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="2",
     font = 200,
@@ -325,7 +331,7 @@ three_btn = Button(
     btn_row1,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="3",
     font = 200,
@@ -340,7 +346,7 @@ four_btn = Button(
     btn_row2,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="4",
     font = 200,
@@ -354,7 +360,7 @@ five_btn = Button(
     btn_row2,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="5",
     font = 200,
@@ -368,7 +374,7 @@ six_btn = Button(
     btn_row2,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="6",
     font = 200,
@@ -382,7 +388,7 @@ seven_btn = Button(
     btn_row3,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="7",
     font = 200,
@@ -397,7 +403,7 @@ eight_btn = Button(
     btn_row3,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="8",
     font = 200,
@@ -412,7 +418,7 @@ nine_btn = Button(
     btn_row3,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="9",
     font = 200,
@@ -426,7 +432,7 @@ zero_btn = Button(
     btn_row4,
     width = 5,
     height = 2,
-    bg = "#567392",
+    bg = "#3F5252",
     fg = "white",
     text="0",
     font = 200,
@@ -439,7 +445,7 @@ c_btn = Button(
     btn_row4,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text = "C",
     font = 200,
@@ -452,7 +458,7 @@ pow_btn = Button(
     btn_row5,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text="^",
     font = 200,
@@ -464,9 +470,9 @@ pi_btn = Button(
     btn_row5,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
-    text="pi",
+    text = "pi",
     font = 200,
     relief=RAISED,
     command = pi_btn_clicked
@@ -478,7 +484,7 @@ decimal_btn = Button(
     btn_row5,
     width = 5,
     height = 2,
-    bg = "#69A7E9",
+    bg = "#5EA8A8",
     fg = "white",
     text=".",
     font = 200,
